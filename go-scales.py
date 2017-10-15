@@ -127,7 +127,7 @@ for x in guidelines:
                 #guidelinehtml += "</ul>"
         # make guidelinehtml safe for javascript
         guidelinehtml = guidelinehtml.replace("'","\'")
-        guidelinehtml = "document.write('" + guidelinehtml + "')"
+        guidelinehtml = "document.write('" + guidelinehtml + "');"
         guideline = open("guideline_" + x + ".html","w")
         guideline.write(template.replace(js_swap_string,"guideline_" + x + ".js",1))
         guideline.close()
