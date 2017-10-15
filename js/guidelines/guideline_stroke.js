@@ -1,4 +1,3 @@
-// Stroke guideline
 // A standalone guideline with a mobile-first design ethos.
 // Can be added in to any webpage or HTML5 app as a drop-in piece of Javascript code.
 // e.g. <script src="stroke.js"></src>
