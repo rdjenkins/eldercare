@@ -8,7 +8,8 @@
 
 import os, shutil
 from distutils.dir_util import copy_tree
-import sys
+import sys, cgi, re
+import Orgnode
 
 print "Making HTML files for the scales"
 
@@ -17,19 +18,25 @@ print "Making HTML files for the scales"
 path_to_android_app_folder = "/home/dean/AndroidStudioProjects/Eldercare/app/src/main/assets/"
 # scales to be included
 scales = ['wells','has-bled','cha2ds2-vasc','amt','frax','qfracture','abcd2','curb-65']
+# guidelines to be included
+guidelines = ['stroke']
 # HTML template
 scale_template = 'go-scales_template.html'
 scalecounter = 0
-skipped = 0
+scale_skipped = 0
+guideline_template = 'go-guidelines_template.html'
+guideline_template_js = 'go-guidelines_template.js'
+guidelinecounter = 0
+guideline_skipped = 0
 js_swap_string = "XXXXXXXXXX.js"
 
-# read the template
+# read scale template
 print "Using template '" + scale_template + "'"
 f = open(scale_template)
 template = f.read()
 f.close()
 
-# check template is OK
+# check scale template is OK
 if template.find(js_swap_string) == -1:
     print "Fatal error: template swap string '" + js_swap_string + "' not found."
     sys.exit()
@@ -44,19 +51,19 @@ for x in scales:
         msg = msg + "... done 'scale_" + x + ".html'"
         scalecounter = scalecounter + 1
     else:
-        msg = msg + " ... skipped as no 'js/scales/"+x+".js'"
-        skipped = skipped + 1
+        msg = msg + " ... scale skipped as no 'js/scales/"+x+".js'"
+        scale_skipped = scale_skipped + 1
     print msg
 
 # generate a report
 report = "Finished. "
 
-if skipped == 0:
+if scale_skipped == 0:
     report = report + ""
-elif skipped == 1:
+elif scale_skipped == 1:
     report = report + "1 scale skipped. "
 else:
-    report = report + str(skipped) + " scales skipped. "
+    report = report + str(scale_skipped) + " scales skipped. "
 
 if scalecounter == 1:
     report = report + "1 scale created. "
@@ -64,6 +71,99 @@ else:
     report = report + str(scalecounter) + " scales done. "
 
 print report
+
+
+# read guideline template HTML
+print "Using template '" + guideline_template + "'"
+f = open(guideline_template)
+template = f.read()
+f.close()
+
+# check guideline template HTML is OK
+if template.find(js_swap_string) == -1:
+    print "Fatal error: template swap string '" + js_swap_string + "' not found."
+    sys.exit()
+
+# read guideline template JS
+print "Using template '" + guideline_template_js + "'"
+f = open(guideline_template_js)
+template_js = f.read()
+f.close()
+
+# check guideline template JS is OK
+if template_js.find(js_swap_string) == -1:
+    print "Fatal error: template swap string '" + js_swap_string + "' not found."
+    sys.exit()
+
+def htmlentities(string):
+    string = cgi.escape(string).encode('ascii', 'xmlcharrefreplace') # markup htmlentities
+    string = re.sub(r'\[\[(.*?)\]\[(.*?)\]\]',r'<a href="\1">\2</a>',string) # find and code org-mod encoded hyperlinks
+    return string
+
+# create the guidelines files
+for x in guidelines:
+    msg = "   " + x + " "
+    if os.path.isfile('js/guidelines/'+x+'.txt'):
+        # get the guideline text file in org-mode format
+        nodelist = Orgnode.makelist('js/guidelines/'+x+'.txt')
+        guidelinehtml = ""
+        for n in nodelist:
+            # make HTML headings
+            guidelinehtml += "<h" + str(n.Level()) + ">" # HTML Heading tag open
+            guidelinehtml +=  htmlentities(n.Heading())
+            guidelinehtml += "</h" + str(n.Level()) + ">" # HTML Heading tag close
+            # if there is a body then below a heading then make it in to a HTML list
+            bodylist = []
+            # collect the list items
+            for line in n.Body().split('\n'):
+                if len(line) > 0:
+                    bodylist.append("<p>"+htmlentities(line)+"</p>")
+            # only if there are list items make a HTML unordered list
+            # (this forces ignoring of blank lines in the guideline file)
+            if len(bodylist) > 0:
+                #guidelinehtml += "<ul>"
+                for item in bodylist:
+                    guidelinehtml += item
+                #guidelinehtml += "</ul>"
+        # make guidelinehtml safe for javascript
+        guidelinehtml = guidelinehtml.replace("'","\'")
+        guidelinehtml = "document.write('" + guidelinehtml + "')"
+        guideline = open("guideline_" + x + ".html","w")
+        guideline.write(template.replace(js_swap_string,"guideline_" + x + ".js",1))
+        guideline.close()
+        guideline_js = open("js/guidelines/guideline_" + x + ".js","w")
+        guideline_js.write(template_js.replace(js_swap_string,guidelinehtml,1))
+        guideline_js.close()
+
+        msg = msg + "... done 'guideline_" + x + ".html'"
+        guidelinecounter = guidelinecounter + 1
+    else:
+        msg = msg + " ... guideline skipped as no 'js/guidelines/"+x+" .txt'"
+        guideline_skipped = guideline_skipped + 1
+    print msg
+
+# generate a report
+report = "Finished. "
+
+if guideline_skipped == 0:
+    report = report + ""
+elif guideline_skipped == 1:
+    report = report + "1 guideline skipped. "
+else:
+    report = report + str(guideline_skipped) + " guideline skipped. "
+
+if guidelinecounter == 1:
+    report = report + "1 guideline created. "
+else:
+    report = report + str(guidelinecounter) + " guidelines done. "
+
+print report
+
+
+
+
+
+
 
 # print reminder
 print "remember to copy the files to the App(s)"
@@ -88,7 +188,11 @@ if os.path.isdir(path_to_android_app_folder):
         print "Copying from " + from_directory + " to " + path_to_android_app_folder
         copy_tree(from_directory, path_to_android_app_folder)
         os.unlink(path_to_android_app_folder + "go-scales.py")
+        os.unlink(path_to_android_app_folder + "Orgnode.py")
+        os.unlink(path_to_android_app_folder + "Orgnode.pyc")
         os.unlink(path_to_android_app_folder + scale_template)
+        os.unlink(path_to_android_app_folder + guideline_template)
+        os.unlink(path_to_android_app_folder + guideline_template_js)
     else:
         print "You chose No!"
 else:
