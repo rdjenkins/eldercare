@@ -3,6 +3,7 @@
 # A script for creating the static HTML pages for the scales
 # It checks a list of scale names to see if they have a corresponding Javascript file
 # If they do a HTML page is created for them
+# Then it creates Javascript files for the guidelines using org-mode encoded sources in the js/guidelines folder.
 # It then offers to copy files to Android Studio Project assets folder
 # created Dean Jenkins 8/Oct/2017
 
@@ -30,6 +31,7 @@ guidelinecounter = 0
 guideline_skipped = 0
 js_swap_string = "XXXXXXXXXX.js"
 
+#### do the scales ####
 # read scale template
 print "Using template '" + scale_template + "'"
 f = open(scale_template)
@@ -72,7 +74,7 @@ else:
 
 print report
 
-
+#### do the guidelines ####
 # read guideline template HTML
 print "Using template '" + guideline_template + "'"
 f = open(guideline_template)
@@ -108,31 +110,38 @@ for x in guidelines:
         nodelist = Orgnode.makelist('js/guidelines/'+x+'.txt')
         guidelinehtml = ""
         for n in nodelist:
-            # make HTML headings
+            # make HTML headings tags
             guidelinehtml += "<h" + str(n.Level()) + ">" # HTML Heading tag open
             guidelinehtml +=  htmlentities(n.Heading())
-            guidelinehtml += "</h" + str(n.Level()) + ">" # HTML Heading tag close
-            # if there is a body then below a heading then make it in to a HTML list
+            guidelinehtml += "</h" + str(n.Level()) + ">\n" # HTML Heading tag close
+            # if there is a body below a heading then make it in to HTML too
             bodylist = []
             # collect the list items
             for line in n.Body().split('\n'):
                 if len(line) > 0:
-                    bodylist.append("<p>"+htmlentities(line)+"</p>")
+                    bodylist.append(" <p>"+htmlentities(line)+"</p>\n")
             # only if there are list items make a HTML unordered list
             # (this forces ignoring of blank lines in the guideline file)
             if len(bodylist) > 0:
-                #guidelinehtml += "<ul>"
+                #guidelinehtml += "<ul>" # not using lists at the moment (looks ugly)
                 for item in bodylist:
                     guidelinehtml += item
-                #guidelinehtml += "</ul>"
+                #guidelinehtml += "</ul>" # not using lists at the moment (looks ugly)
         # make guidelinehtml safe for javascript
         guidelinehtml = guidelinehtml.replace("'","\'")
-        guidelinehtml = "document.write('" + guidelinehtml + "');"
+        guidelinehtmllines = guidelinehtml.split("\n")
+        # wrap the html into a Javascript document.write() lines
+        jsinsert = ""
+        for line in guidelinehtmllines:
+            if line != "":
+                jsinsert += "document.write('" + line + "');\n"
+        # put the Javascript link into the HTML page
         guideline = open("guideline_" + x + ".html","w")
         guideline.write(template.replace(js_swap_string,"guideline_" + x + ".js",1))
         guideline.close()
+        # create the Javascript source file
         guideline_js = open("js/guidelines/guideline_" + x + ".js","w")
-        guideline_js.write(template_js.replace(js_swap_string,guidelinehtml,1))
+        guideline_js.write(template_js.replace(js_swap_string,jsinsert,1))
         guideline_js.close()
 
         msg = msg + "... done 'guideline_" + x + ".html'"
@@ -187,6 +196,7 @@ if os.path.isdir(path_to_android_app_folder):
         from_directory = os.curdir
         print "Copying from " + from_directory + " to " + path_to_android_app_folder
         copy_tree(from_directory, path_to_android_app_folder)
+        # remove files that are not needed in the Android App assets folder
         os.unlink(path_to_android_app_folder + "go-scales.py")
         os.unlink(path_to_android_app_folder + "Orgnode.py")
         os.unlink(path_to_android_app_folder + "Orgnode.pyc")
