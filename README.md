@@ -8,6 +8,8 @@ A live demo is available here <a href="https://agnate.co.uk/ec/">https://agnate.
 
 An <a href="https://play.google.com/apps/testing/uk.co.agnate.eldercare">Open Beta Testing version of Eldercare</a> built for Android is available on the Play Store (you'll have to login with your Google Play account to see the listing).
 
+iOS App ... coming soon.
+
 Contributors:
 <a href="https://about.me/deanjenkins">Dean Jenkins</a>
 
