@@ -6,6 +6,8 @@ This compilation of educational material and its source code is licensed under a
 
 A live demo is available here <a href="https://agnate.co.uk/ec/">https://agnate.co.uk/ec/</a>
 
+An <a href="https://play.google.com/apps/testing/uk.co.agnate.eldercare">Open Beta Testing version of Eldercare</a> built for Android is available on the Play Store (you'll have to login with your Google Play account to see the listing).
+
 Contributors:
 <a href="https://about.me/deanjenkins">Dean Jenkins</a>
 
