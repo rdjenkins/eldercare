@@ -15,7 +15,7 @@ Contributors:
 
 # scale and guideline build script - go-scales.py
 
-go-scales.py is a build script in Python which runs from the command line to creat or update the scales and guidelines HTML and Javascript files within the App before being released to a browser or an App. It is a developer tool.
+go-scales.py is a build script written in Python which runs from the command line to create or update the scales and guidelines HTML and Javascript files within the App before being released to a browser or an App. It is a developer tool.
 
 The Javascript scales and guidelines are designed to be standalone and not require internet access. They could be used on a mobile device for example that doesn't have network access - such as a 'bring your own device' to clinical settings or clinic-based pre-programmed tablets or small screens. The scales and guidelines are stored in js/scales and js/guidelines and the static HTML pages that call them are all built on templates to make it easier to maintain. The scales are handcrafted but the guideline javascript is built with a tool based on org-mode encoding.
 
