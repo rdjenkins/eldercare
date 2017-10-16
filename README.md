@@ -1,6 +1,6 @@
 # eldercare
 
-Built with Bootstrap 4, HTML5, Font Awesome, Orgnode, Android Studio, Apple Xcode. Where possible all original scientific works have been cited with a journal reference and all registered trademarks and copyright acknowledged.
+Built with Bootstrap 4, HTML5, Font Awesome, Python, org-mode, Orgnode, Android Studio, Apple Xcode. Where possible all original scientific works have been cited with a journal reference and all registered trademarks and copyright acknowledged.
 
 This compilation of educational material and its source code is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
 
