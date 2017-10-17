@@ -197,6 +197,7 @@ if os.path.isdir(path_to_android_app_folder):
         print "Copying from " + from_directory + " to " + path_to_android_app_folder
         copy_tree(from_directory, path_to_android_app_folder)
         # remove files that are not needed in the Android App assets folder
+        shutil.rmtree(path_to_android_app_folder + ".git")
         os.unlink(path_to_android_app_folder + "go-scales.py")
         os.unlink(path_to_android_app_folder + "Orgnode.py")
         os.unlink(path_to_android_app_folder + "Orgnode.pyc")
