@@ -4,9 +4,9 @@ Built with Bootstrap 4, HTML5, Font Awesome, Python, org-mode, Orgnode, Android 
 
 This compilation of educational material and its source code is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
 
-A live demo is available here <a href="https://agnate.co.uk/ec/">https://agnate.co.uk/ec/</a>
+A live web demo is available here <a href="https://agnate.co.uk/ec/">https://agnate.co.uk/ec/</a>
 
-An <a href="https://play.google.com/apps/testing/uk.co.agnate.eldercare">Open Beta Testing version of Eldercare</a> built for Android is available on the Play Store (you'll have to login with your Google Play account to see the listing).
+The HTML5 app is also available built into an <a href="https://play.google.com/store/apps/details?id=uk.co.agnate.eldercare">Android app</a>.
 
 iOS App ... coming soon.
 
