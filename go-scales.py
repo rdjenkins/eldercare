@@ -99,6 +99,7 @@ if template_js.find(js_swap_string) == -1:
 
 def htmlentities(string):
     string = cgi.escape(string) # HTML entities
+    string = re.sub(r"'","\\'",string)
     string = re.sub(r'\[\[(.*?)\]\[(.*?)\]\]',r'<a href="\1">\2</a>',string) # find and code org-mod encoded hyperlinks
     return string
 
