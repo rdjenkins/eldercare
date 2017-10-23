@@ -7,7 +7,7 @@
 # It then offers to copy files to Android Studio Project assets folder
 # created Dean Jenkins 8/Oct/2017
 
-import os, shutil
+import os, shutil, datetime
 from distutils.dir_util import copy_tree
 import sys, cgi, re
 import Orgnode
@@ -110,9 +110,10 @@ for x in guidelines:
         # get the guideline text file in org-mode format
         nodelist = Orgnode.makelist('js/guidelines/'+x+'.txt')
         guidelinehtml = ""
+        headernumber = 0
         for n in nodelist:
             # make HTML headings tags
-            guidelinehtml += "<h" + str(n.Level()) + ">" # HTML Heading tag open
+            guidelinehtml += '<h' + str(n.Level()) + ' data-target="#glb_' + str(headernumber) + '" data-toggle="collapse">' # HTML Heading tag open
             guidelinehtml +=  htmlentities(n.Heading())
             guidelinehtml += "</h" + str(n.Level()) + ">\n" # HTML Heading tag close
             # if there is a body below a heading then make it in to HTML too
@@ -120,14 +121,17 @@ for x in guidelines:
             # collect the list items
             for line in n.Body().split('\n'):
                 if len(line) > 0:
-                    bodylist.append(" <p>"+htmlentities(line)+"</p>\n")
+                    bodylist.append("<p>"+htmlentities(line)+"</p>\n")
             # only if there are list items make a HTML unordered list
             # (this forces ignoring of blank lines in the guideline file)
             if len(bodylist) > 0:
+                guidelinehtml += '<div id="glb_' + str(headernumber) + '" class="collapse">'
                 #guidelinehtml += "<ul>" # not using lists at the moment (looks ugly)
                 for item in bodylist:
                     guidelinehtml += item
                 #guidelinehtml += "</ul>" # not using lists at the moment (looks ugly)
+                guidelinehtml += '</div>'
+            headernumber = headernumber + 1
         # make guidelinehtml safe for javascript
         guidelinehtml = guidelinehtml.replace("'","\'")
         guidelinehtmllines = guidelinehtml.split("\n")
@@ -169,11 +173,23 @@ else:
 
 print report
 
+print "Updating version date"
 
+# read about file
+f = open('about.html')
+aboutfile = f.read()
+f.close()
 
-
-
-
+# check about file has detectable swap string
+if aboutfile.find('Version: ') == -1:
+    print "Fatal error: about.html does not contain 'Version: ' not found."
+    sys.exit()
+else:
+    today = datetime.date.today()
+    aboutfile = re.sub(r'Version: .*?</p>','Version: ' + today.strftime('%d %B %Y') + '</p>',aboutfile)
+    about_new = open("about.html","w")
+    about_new.write(aboutfile)
+    about_new.close()
 
 # print reminder
 print "remember to copy the files to the App(s)"
