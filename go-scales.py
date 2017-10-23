@@ -113,7 +113,7 @@ for x in guidelines:
         headernumber = 0
         for n in nodelist:
             # make HTML headings tags
-            guidelinehtml += '<h' + str(n.Level()) + ' data-target="#glb_' + str(headernumber) + '" data-toggle="collapse">' # HTML Heading tag open
+            guidelinehtml += '<h' + str(n.Level()) + ' data-target="#glb_' + str(headernumber) + '" data-toggle="collapse" style="cursor: pointer;">' # HTML Heading tag open. The inline style required for forcing iOS to behave.
             guidelinehtml +=  htmlentities(n.Heading())
             guidelinehtml += "</h" + str(n.Level()) + ">\n" # HTML Heading tag close
             # if there is a body below a heading then make it in to HTML too
