@@ -7,11 +7,17 @@
 # It then offers to copy files to Android Studio Project assets folder
 # created Dean Jenkins 8/Oct/2017
 
+#### set up some variables ####
+# path to Android Studio Project (modify as required)
+path_to_android_app_folder = "/home/dean/AndroidStudioProjects/Eldercare/app/src/main/assets/"
+###############################
+
 import os, shutil, datetime
 from distutils.dir_util import copy_tree
 import sys, cgi, re
 import Orgnode
 
+#### set up some functions ####
 # method for getting filenames from a directory
 # top directory os.walk trick adapted from https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory#3207973
 def filenamesbyextension(path,extension):
@@ -27,15 +33,19 @@ def filenamesbyextension(path,extension):
     return filenames
 
 # command line colour codes from https://stackoverflow.com/a/27265453/4066963
-W  = '\033[0m'  # white (normal)
-R  = '\033[31m' # red
-G  = '\033[32m' # green
+def red(string):
+    W  = '\033[0m'  # white (normal)
+    R  = '\033[31m' # red
+    return R + string + W
+
+def green(string):
+    W  = '\033[0m'  # white (normal)
+    G  = '\033[32m' # green
+    return G + string + W
+###############################
 
 print "Making HTML files for the scales"
 
-#### set up some variables ####
-# path to Android Studio Project (modify as required)
-path_to_android_app_folder = "/home/dean/AndroidStudioProjects/Eldercare/app/src/main/assets/"
 # scales to be included
 scales = filenamesbyextension('js/scales','js')
 # guidelines to be included
@@ -59,7 +69,7 @@ f.close()
 
 # check scale template is OK
 if template.find(js_swap_string) == -1:
-    print R + "Fatal error: template swap string '" + js_swap_string + "' not found." + W
+    print red("Fatal error: template swap string '" + js_swap_string + "' not found.")
     sys.exit()
 
 # create the scales files
@@ -69,10 +79,10 @@ for x in scales:
         scale = open("scale_" + x + ".html","w")
         scale.write(template.replace(js_swap_string,x + ".js",1))
         scale.close()
-        msg = msg + G + "... done 'scale_" + x + ".html'" + W
+        msg = msg + green("... done 'scale_" + x + ".html'")
         scalecounter = scalecounter + 1
     else:
-        msg = msg + R + " ... scale skipped as no 'js/scales/"+x+".js'" + W
+        msg = msg + red(" ... scale skipped as no 'js/scales/"+x+".js'")
         scale_skipped = scale_skipped + 1
     print msg
 
@@ -102,7 +112,7 @@ f.close()
 
 # check guideline template HTML is OK
 if template.find(js_swap_string) == -1:
-    print R + "Fatal error: template swap string '" + js_swap_string + "' not found." + W
+    print red("Fatal error: template swap string '" + js_swap_string + "' not found.")
     sys.exit()
 
 # read guideline template JS
@@ -113,7 +123,7 @@ f.close()
 
 # check guideline template JS is OK
 if template_js.find(js_swap_string) == -1:
-    print R + "Fatal error: template swap string '" + js_swap_string + "' not found." + W
+    print red("Fatal error: template swap string '" + js_swap_string + "' not found.")
     sys.exit()
 
 def htmlentities(string):
@@ -168,10 +178,10 @@ for x in guidelines:
         guideline_js.write(template_js.replace(js_swap_string,jsinsert,1))
         guideline_js.close()
 
-        msg = msg + G + "... done 'guideline_" + x + ".html'" + W
+        msg = msg + green("... done 'guideline_" + x + ".html'")
         guidelinecounter = guidelinecounter + 1
     else:
-        msg = msg + R + " ... guideline skipped as no 'js/guidelines/"+x+" .txt'" + W
+        msg = msg + red(" ... guideline skipped as no 'js/guidelines/"+x+" .txt'")
         guideline_skipped = guideline_skipped + 1
     print msg
 
@@ -201,7 +211,7 @@ f.close()
 
 # check about file has detectable swap string
 if aboutfile.find('Version: ') == -1:
-    print R + "Fatal error: about.html does not contain 'Version: ' not found." + W
+    print red("Fatal error: about.html does not contain 'Version: ' not found.")
     sys.exit()
 else:
     today = datetime.date.today()
@@ -244,8 +254,8 @@ if os.path.isdir(path_to_android_app_folder):
         print "You chose No!"
 else:
     if path_to_android_app_folder !="":
-        print R + "Android App folder '" + path_to_android_app_folder + "' does not exist. Skipping." + W
+        print red("Android App folder '" + path_to_android_app_folder + "' does not exist. Skipping.")
     else:
-        print R + "Android App folder not defined. Skipping." + W
+        print red("Android App folder not defined. Skipping.")
 
 raw_input("Hit ENTER to exit ") # python 2
