@@ -19,10 +19,12 @@ def filenamesbyextension(path,extension):
     fullfilenames = []
     for (dirpath, dirnames, filenames) in os.walk(path):
         fullfilenames.extend(filenames)
-        break 
-    # list trick adapted from https://stackoverflow.com/a/20349305/4066963
-    return [re.sub(extension+'$', '', fname) for fname in fullfilenames]
-
+        break
+    filenames = []
+    for name in fullfilenames:
+        if name.endswith(extension): # return only those with the extension
+            filenames.append(re.sub(extension+'$', '', name))
+    return filenames
 
 print "Making HTML files for the scales"
 
@@ -32,7 +34,7 @@ path_to_android_app_folder = "/home/dean/AndroidStudioProjects/Eldercare/app/src
 # scales to be included
 scales = filenamesbyextension('js/scales','js')
 # guidelines to be included
-guidelines = ['stroke','acute_heart_failure_qs']
+guidelines = filenamesbyextension('js/guidelines','txt')
 # HTML template
 scale_template = 'go-scales_template.html'
 scalecounter = 0
