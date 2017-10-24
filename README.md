@@ -8,7 +8,7 @@ A live web demo is available here <a href="https://agnate.co.uk/ec/">https://agn
 
 # apps
 
-The HTML5 app is also available built into mobile apps with the source code of the apps also available as Open Source on github.
+The HTML5 app is also available built into mobile apps with the source code of the apps available as Open Source on github.
 
 The <a href="https://play.google.com/store/apps/details?id=uk.co.agnate.eldercare">Android app</a> and its source code <a href="https://github.com/rdjenkins/eldercare.android">eldercare.android</a>.
 
