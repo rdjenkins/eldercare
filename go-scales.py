@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
 # A script for creating the static HTML pages for the scales
-# It checks a list of scale names to see if they have a corresponding Javascript file
-# If they do a HTML page is created for them
+# Finds the list of Javascript scales from the js/scales directory
+# Create HTML pages for them
 # Then it creates Javascript files for the guidelines using org-mode encoded sources in the js/guidelines folder.
 # It then offers to copy files to Android Studio Project assets folder
 # created Dean Jenkins 8/Oct/2017
@@ -12,13 +12,25 @@ from distutils.dir_util import copy_tree
 import sys, cgi, re
 import Orgnode
 
+# method for getting filenames from a directory
+# top directory os.walk trick adapted from https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory#3207973
+def filenamesbyextension(path,extension):
+    extension = "." + extension.lstrip(".") # in case this function is called with a dot or not
+    fullfilenames = []
+    for (dirpath, dirnames, filenames) in os.walk(path):
+        fullfilenames.extend(filenames)
+        break 
+    # list trick adapted from https://stackoverflow.com/a/20349305/4066963
+    return [re.sub(extension+'$', '', fname) for fname in fullfilenames]
+
+
 print "Making HTML files for the scales"
 
 #### set up some variables ####
 # path to Android Studio Project (modify as required)
 path_to_android_app_folder = "/home/dean/AndroidStudioProjects/Eldercare/app/src/main/assets/"
 # scales to be included
-scales = ['wells','has-bled','cha2ds2-vasc','amt','frax','qfracture','abcd2','curb-65']
+scales = filenamesbyextension('js/scales','js')
 # guidelines to be included
 guidelines = ['stroke','acute_heart_failure_qs']
 # HTML template
