@@ -26,6 +26,11 @@ def filenamesbyextension(path,extension):
             filenames.append(re.sub(extension+'$', '', name))
     return filenames
 
+# command line colour codes from https://stackoverflow.com/a/27265453/4066963
+W  = '\033[0m'  # white (normal)
+R  = '\033[31m' # red
+G  = '\033[32m' # green
+
 print "Making HTML files for the scales"
 
 #### set up some variables ####
@@ -54,7 +59,7 @@ f.close()
 
 # check scale template is OK
 if template.find(js_swap_string) == -1:
-    print "Fatal error: template swap string '" + js_swap_string + "' not found."
+    print R + "Fatal error: template swap string '" + js_swap_string + "' not found." + W
     sys.exit()
 
 # create the scales files
@@ -64,10 +69,10 @@ for x in scales:
         scale = open("scale_" + x + ".html","w")
         scale.write(template.replace(js_swap_string,x + ".js",1))
         scale.close()
-        msg = msg + "... done 'scale_" + x + ".html'"
+        msg = msg + G + "... done 'scale_" + x + ".html'" + W
         scalecounter = scalecounter + 1
     else:
-        msg = msg + " ... scale skipped as no 'js/scales/"+x+".js'"
+        msg = msg + R + " ... scale skipped as no 'js/scales/"+x+".js'" + W
         scale_skipped = scale_skipped + 1
     print msg
 
@@ -97,7 +102,7 @@ f.close()
 
 # check guideline template HTML is OK
 if template.find(js_swap_string) == -1:
-    print "Fatal error: template swap string '" + js_swap_string + "' not found."
+    print R + "Fatal error: template swap string '" + js_swap_string + "' not found." + W
     sys.exit()
 
 # read guideline template JS
@@ -108,7 +113,7 @@ f.close()
 
 # check guideline template JS is OK
 if template_js.find(js_swap_string) == -1:
-    print "Fatal error: template swap string '" + js_swap_string + "' not found."
+    print R + "Fatal error: template swap string '" + js_swap_string + "' not found." + W
     sys.exit()
 
 def htmlentities(string):
@@ -163,10 +168,10 @@ for x in guidelines:
         guideline_js.write(template_js.replace(js_swap_string,jsinsert,1))
         guideline_js.close()
 
-        msg = msg + "... done 'guideline_" + x + ".html'"
+        msg = msg + G + "... done 'guideline_" + x + ".html'" + W
         guidelinecounter = guidelinecounter + 1
     else:
-        msg = msg + " ... guideline skipped as no 'js/guidelines/"+x+" .txt'"
+        msg = msg + R + " ... guideline skipped as no 'js/guidelines/"+x+" .txt'" + W
         guideline_skipped = guideline_skipped + 1
     print msg
 
@@ -196,7 +201,7 @@ f.close()
 
 # check about file has detectable swap string
 if aboutfile.find('Version: ') == -1:
-    print "Fatal error: about.html does not contain 'Version: ' not found."
+    print R + "Fatal error: about.html does not contain 'Version: ' not found." + W
     sys.exit()
 else:
     today = datetime.date.today()
@@ -239,8 +244,8 @@ if os.path.isdir(path_to_android_app_folder):
         print "You chose No!"
 else:
     if path_to_android_app_folder !="":
-        print "Android App folder '" + path_to_android_app_folder + "' does not exist. Skipping."
+        print R + "Android App folder '" + path_to_android_app_folder + "' does not exist. Skipping." + W
     else:
-        print "Android App folder not defined. Skipping."
+        print R + "Android App folder not defined. Skipping." + W
 
 raw_input("Hit ENTER to exit ") # python 2
