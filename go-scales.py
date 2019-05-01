@@ -221,7 +221,7 @@ else:
     about_new.close()
 
 # print reminder
-print "remember to copy the files to the App(s)"
+print "remember to add menu items if new scales and copy the files to the App(s)"
 
 if os.path.isdir(path_to_android_app_folder):
     print "Android App folder path exists"    
