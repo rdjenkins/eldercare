@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+# converted to python3 19/Aug/2022
+# Moved to EC2 5/Sep/2020
+
 # A script for creating the static HTML pages for the scales
 # Finds the list of Javascript scales from the js/scales directory
 # Create HTML pages for them
@@ -7,14 +10,10 @@
 # It then offers to copy files to Android Studio Project assets folder
 # created Dean Jenkins 8/Oct/2017
 
-#### set up some variables ####
-# path to Android Studio Project (modify as required)
-path_to_android_app_folder = "/home/dean/AndroidStudioProjects/Eldercare/app/src/main/assets/"
-###############################
 
 import os, shutil, datetime
-from distutils.dir_util import copy_tree
-import sys, cgi, re
+#from distutils.dir_util import copy_tree
+import sys, html, re
 import Orgnode
 
 #### set up some functions ####
@@ -44,7 +43,7 @@ def green(string):
     return G + string + W
 ###############################
 
-print "Making HTML files for the scales"
+print("Making HTML files for the scales")
 
 # scales to be included
 scales = filenamesbyextension('js/scales','js')
@@ -62,14 +61,14 @@ js_swap_string = "XXXXXXXXXX.js"
 
 #### do the scales ####
 # read scale template
-print "Using template '" + scale_template + "'"
+print("Using template '" + scale_template + "'")
 f = open(scale_template)
 template = f.read()
 f.close()
 
 # check scale template is OK
 if template.find(js_swap_string) == -1:
-    print red("Fatal error: template swap string '" + js_swap_string + "' not found.")
+    print(red("Fatal error: template swap string '" + js_swap_string + "' not found."))
     sys.exit()
 
 # create the scales files
@@ -84,7 +83,7 @@ for x in scales:
     else:
         msg = msg + red(" ... scale skipped as no 'js/scales/"+x+".js'")
         scale_skipped = scale_skipped + 1
-    print msg
+    print(msg)
 
 # generate a report
 report = "Finished. "
@@ -101,33 +100,33 @@ if scalecounter == 1:
 else:
     report = report + str(scalecounter) + " scales done. "
 
-print report
+print(report)
 
 #### do the guidelines ####
 # read guideline template HTML
-print "Using template '" + guideline_template + "'"
+print("Using template '" + guideline_template + "'")
 f = open(guideline_template)
 template = f.read()
 f.close()
 
 # check guideline template HTML is OK
 if template.find(js_swap_string) == -1:
-    print red("Fatal error: template swap string '" + js_swap_string + "' not found.")
+    print(red("Fatal error: template swap string '" + js_swap_string + "' not found."))
     sys.exit()
 
 # read guideline template JS
-print "Using template '" + guideline_template_js + "'"
+print("Using template '" + guideline_template_js + "'")
 f = open(guideline_template_js)
 template_js = f.read()
 f.close()
 
 # check guideline template JS is OK
 if template_js.find(js_swap_string) == -1:
-    print red("Fatal error: template swap string '" + js_swap_string + "' not found.")
+    print(red("Fatal error: template swap string '" + js_swap_string + "' not found."))
     sys.exit()
 
 def htmlentities(string):
-    string = cgi.escape(string) # HTML entities
+    string = html.escape(string) # HTML entities
     string = re.sub(r"'","\\'",string)
     string = re.sub(r'\[\[(.*?)\]\[(.*?)\]\]',r'<a href="\1">\2</a>',string) # find and code org-mod encoded hyperlinks
     return string
@@ -183,7 +182,7 @@ for x in guidelines:
     else:
         msg = msg + red(" ... guideline skipped as no 'js/guidelines/"+x+" .txt'")
         guideline_skipped = guideline_skipped + 1
-    print msg
+    print(msg)
 
 # generate a report
 report = "Finished. "
@@ -200,9 +199,9 @@ if guidelinecounter == 1:
 else:
     report = report + str(guidelinecounter) + " guidelines done. "
 
-print report
+print(report)
 
-print "Updating version date"
+print("Updating version date")
 
 # read about file
 f = open('about.html')
@@ -211,51 +210,36 @@ f.close()
 
 # check about file has detectable swap string
 if aboutfile.find('Version: ') == -1:
-    print red("Fatal error: about.html does not contain 'Version: ' not found.")
+    print(red("Fatal error: about.html does not contain 'Version: ' not found."))
     sys.exit()
 else:
-    today = datetime.date.today()
-    aboutfile = re.sub(r'Version: .*?</p>','Version: ' + today.strftime('%d %B %Y') + '</p>',aboutfile)
+    today = datetime.datetime.utcnow()
+    aboutfile = re.sub(r'Version: .*?</p>','Version: ' + today.strftime('%d %B %Y (%H:%M:%S UTC)') + '</p>',aboutfile)
     about_new = open("about.html","w")
     about_new.write(aboutfile)
     about_new.close()
 
-# print reminder
-print "remember to add menu items if new scales and copy the files to the App(s)"
+print("Updating service worker cache name")
 
-if os.path.isdir(path_to_android_app_folder):
-    print "Android App folder path exists"    
+# read service worker file
+f = open('sw.js')
+swfile = f.read()
+f.close()
 
-    choice = raw_input("Copy to Android? y/n ") # python 2
-    if choice == "y" or choice == "Y":
-        print "You chose Yes!"
-        print "Deleteing contents of " + path_to_android_app_folder
-        for the_file in os.listdir(path_to_android_app_folder):
-            file_path = os.path.join(path_to_android_app_folder, the_file)
-            try:
-                if os.path.isfile(file_path):
-                    os.unlink(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-            except Exception as e:
-                print(e)
-        from_directory = os.curdir
-        print "Copying from " + from_directory + " to " + path_to_android_app_folder
-        copy_tree(from_directory, path_to_android_app_folder)
-        # remove files that are not needed in the Android App assets folder
-        shutil.rmtree(path_to_android_app_folder + ".git")
-        os.unlink(path_to_android_app_folder + "go-scales.py")
-        os.unlink(path_to_android_app_folder + "Orgnode.py")
-        os.unlink(path_to_android_app_folder + "Orgnode.pyc")
-        os.unlink(path_to_android_app_folder + scale_template)
-        os.unlink(path_to_android_app_folder + guideline_template)
-        os.unlink(path_to_android_app_folder + guideline_template_js)
-    else:
-        print "You chose No!"
+# check about file has detectable swap string
+if swfile.find('cacheName = "cache_') == -1:
+    print(red("Fatal error: sw.js does not contain 'cacheName = \"cache_' not found."))
+    sys.exit()
 else:
-    if path_to_android_app_folder !="":
-        print red("Android App folder '" + path_to_android_app_folder + "' does not exist. Skipping.")
-    else:
-        print red("Android App folder not defined. Skipping.")
+    thisversion = datetime.datetime.utcnow()
+    swfile = re.sub(r'cacheName = \"cache_.*?\";','cacheName = \"cache_' + thisversion.strftime('%Y%m%d%H%M%S') + '\";',swfile)
+    sw_new = open("sw.js","w")
+    sw_new.write(swfile)
+    sw_new.close()
 
-raw_input("Hit ENTER to exit ") # python 2
+
+# print reminder
+print("remember to add menu items if new scales")
+
+input("Hit ENTER to exit ") # python 2
+

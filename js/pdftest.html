@@ -1,0 +1,52 @@
+<html>
+<head>
+<script src="jspdf.min.js"></script>
+</head>
+<body>
+
+<p id="para">This is some text</p>
+<button onclick="copytext();">Copy to clipboard</button>
+<script>
+
+function selectElementText(el){
+    var range = document.createRange(); // create new range object
+    range.selectNodeContents(el); // set range to encompass desired element text
+    var selection = window.getSelection(); // get Selection object from currently user selected text
+    selection.removeAllRanges(); // unselect any user selected text (if any)
+    selection.addRange(range); // add range to Selection object to select it
+}
+
+function getSelectionText(){
+    var selectedText = "";
+    if (window.getSelection){ // all modern browsers and IE9+
+        selectedText = window.getSelection().toString();
+    }
+    return selectedText
+}
+function copytext() {
+    var para = document.getElementById('para');
+    selectElementText(para); // select the element's text we wish to read
+    var paratext = getSelectionText(); // read the user selection
+    alert(paratext); // alerts
+}
+</script>
+
+
+
+<script>
+// Default export is a4 paper, portrait, using milimeters for units
+//var doc = new jsPDF();
+
+//doc.text('Hello world!', 10, 10);
+//content=doc.output();
+//document.open('application/pdf');
+
+//document.write(content);
+//document.write('<a href="data:application/pdf;base64,' + btoa(content) + '" download="temp.pdf">content</a>');
+//document.close();
+//doc.save('a4.pdf')
+</script>
+
+
+</body>
+</html>

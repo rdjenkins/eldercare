@@ -15,6 +15,9 @@ nav = '    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">' 
 '          <li class="nav-item">' +
 '            <a class="nav-link" href="about.html">About</a>' +
 '          </li>' +
+'          <li class="nav-item">' +
+'          <a href="#" onclick="navigator.serviceWorker.getRegistrations().then(function(registrations) { for(let registration of registrations) { registration.unregister()} }); alert(\'maintenance - refreshing the service worker script\'); window.location.reload(true);" class="btn btn-primary">refresh</a>' +
+'          </li>' +
 '        </ul>' +
 '        <!--form class="form-inline my-2 my-lg-0">' +
 '          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">' +

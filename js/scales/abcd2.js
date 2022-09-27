@@ -8,46 +8,6 @@
 // Creative Commons Attribution 4.0 International (CC BY 4.0)
 // https://creativecommons.org/licenses/by/4.0/
 
-function getvaluefromcheckbox(id) {
-    if (document.getElementById(id).checked) {
-        return parseFloat(document.getElementById(id).value);
-    } else {
-        return 0;
-    }
-}
-
-// getvaluefromradio() for getting radio values
-function getvaluefromradio(name) { // radio buttons work if they have the same name!
-    var radios = document.getElementsByName(name);
-
-    for (var i = 0, length = radios.length; i < length; i++) {
-        if (radios[i].checked) {
-            return parseFloat(radios[i].value);
-            // only one radio can be logically checked, don't check the rest
-            break;
-        }
-    }
-    return null; // we may get here if no radio is checked
-}
-
-function uncheck(id) {
-    document.getElementById(id).checked = false;
-}
-
-//uncheckradio() for unchecking radio buttons
-function uncheckradio(name) { // radio buttons work if they have the same name!
-    var radios = document.getElementsByName(name);
-
-    for (var i = 0, length = radios.length; i < length; i++) {
-        radios[i].checked = false;
-    }
-}
-
-//checkradio() for checking radio buttons
-function checkradio(id) { // specific radio button options have different id's
-    document.getElementById(id).checked = true;
-}
-
 
 function ABCD2()
 {
@@ -138,7 +98,7 @@ simpleradio("tblable_calc_form_duration2","tblable_calc_form_duration","2","Dura
 simplecheckbox("tblable_calc_form_diabetes","1","Diabetes (1)","ABCD2();") +
 
 '    <div id="result" class="alert alert-success">' +
-'        <div><b>ABCD<sub>2</sub>-VASc score = <span id="tblable_calc_form_score"></span></b>. ' +
+'        <div><b>ABCD<sub>2</sub> score = <span id="tblable_calc_form_score"></span></b>. ' +
 '        <span id="tblable_calc_form_comment"></span></div>' +
 '    </div>' +
 

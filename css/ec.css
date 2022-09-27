@@ -8,6 +8,10 @@ body {
   text-align: center;
 }
 .home_buttons .btn {
+  /* margin-bottom: 0.25rem; */
+}
+
+.btn {
   margin-bottom: 0.25rem;
 }
 

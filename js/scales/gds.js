@@ -11,19 +11,6 @@
 
 
 
-function getvaluefromyndkradio(name,positive) {
-    value = getvaluefromradio(name);
-    if (value == positive) {
-        return 1;
-    }
-    if (value == 0) {
-        return null;
-    } else {
-        return 0;
-    }
-}
-
-
 function GDS()
 {
     var totalquestions = 15;

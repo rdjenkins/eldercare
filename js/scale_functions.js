@@ -65,6 +65,21 @@ function simpleheader(text) {
     return html;
 }
 
+function image(url,border=0) {
+    if (border==0) {
+        var borderstyle = '';
+    } else {
+        var borderstyle = 'style="border: 1px black solid; padding: 0.25rem;"';
+    }
+    var html = '    <div class="row1">' +
+'        <div class="col0">' +
+'            <img class="img-fluid" ' + borderstyle + ' src="' + url + '">' +
+'        </div>' +
+'    </div>'
+    return html;
+}
+
+
 function simpleradio(varid,varname,value,labeltext,onclick) {
     var html = '    <div class="row1">' +
 '        <div class="col1">' +

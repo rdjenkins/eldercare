@@ -1,0 +1,169 @@
+* Stroke / TIA in over 16s
+
+summary adapted from the NICE guideline NG128 2019 (updated 2022)
+
+** Rapid recognition of symptoms
+
+Use a validated tool such as FAST in the community, exclude hypoglycaemia, and use a validated tool in the Emergency Department such as ROSIER
+
+** Initial management of suspected and confirmed TIA
+
+offer aspirin 300mg unless contraindicated and give immediately
+refer if suspected TIA for specialist follow-up within 24 hours of onset of symptoms
+do not use scoring systems such as ABCD2
+offer secondary prevention as soon as possible after diagnosis confirmed
+
+** Imaging
+
+do not offer CT for suspected TIA unless clinical suspicion of alternate diagnosis
+after specialist assessment in a TIA clinic consider MRI
+everyone who is considered a candidate for carotid surgery should have urgent carotid imaging
+
+** Urgent carotid endarterectomy
+
+people with stable neurology, symptomatic carotid stenosis 50% - 99% according to NASCET criteria are assessed urgently by carotid endarterectomy service and receive best medical treatment (BP, antiplatelets, cholesterol through diet and drugs, lifestyle)
+do not perform carotid endarterectomy if < 50% NASCET or <70% (ECST) criteria
+
+** Specialist stroke units
+
+admit everyone with suspected stroke directly to a specialist acute stroke unit
+
+** Brain imaging for suspected stroke
+
+immediate non-enhanced CT if any of: indications for thrombolysis or thrombectomy, on oral anticoagulant, a known bleeding tendency, a depressed level of consciousness, unexplained progressive or fluctuating symptoms, papilloedema, neck stiffness, fever, severe headache
+if thrombectomy might be indicated perform CT contrast angiography after non-enhanced CT and add CT perfusion imaging or MRI equivalent if > 6 hours after symptoms started
+perform imaging as soon as possible and within 24 hours of symptom onset in everyone with suspected acute stroke without indications for immediate brain imaging
+
+** Thrombolysis
+
+alteplase as soon as possible within 4.5 hours and intracranial haemorrhage excluded
+administer alteplase only within a well-organised stroke service
+
+** Thrombectomy
+consider overall clinical status and pre-stroke functional status of <3 on modified Rankin score, a score of more than 5 on NIHSS
+if acute ischaemic stroke and confirmed occlusion of the proximal anterior circulation demonstrated by computed tomographic angiography (CTA) or magnetic resonance angiography (MRA)
+ - offer thrombectomy as soon as possible within 6 hours
+if there is the potential to salvage brain tissue
+ - offer thrombectomy as soon as possible to people who were last known to be well between 6 hours and 24 hours previously and there is the potential to salvage brain tissue
+ - consider thrombectomy together with intravenous thrombolysis as soon as possible for people last known to be well up to 24 hours previously and there is the potential to salvage brain tissue
+
+** Aspirin and anticoagulants - ischaemic stroke
+
+aspirin 300mg (by enteral tube if dysphagia) for 2 weeks then change to long term antithrombotic treatment
+offer proton pump inhibitor if dyspepsia with previous aspirin
+offer alternative antiplatelet if allergic or genuinely intolerant of aspirin
+do not routinely use antocoagulation for acute stroke
+
+** Aspirin and anticoagulants - venous stroke
+
+full dose antocoagulation
+
+** Aspirin and anticoagulants - stroke with arterial dissection
+
+offer either antiplatelets or anticoagulants
+
+** Aspirin and anticoagulants - stroke with antiphospholipid syndrome
+
+manage as ischaemic stroke
+
+** Aspirin and anticoagulants - haemorrhagic stroke on anticoagulant
+
+Return clotting levels to normal as soon as possible
+
+** Aspirin and anticoagulants - other comorbidities
+
+aspirin 300mg for 2 weeks before starting anticoagulation in those with disabling ischaemic stroke and AF
+if prosthetic valves and at significant risk of haemorrhagic transformation stop anticoagulant for 1 week and give aspirin 300mg instead
+if proximal DVT or PE with ischaemic stroke give anticoagulation instead of aspirin
+if haemorrhagic stroke and DVT or PE treat with anticoagulation or caval filter
+
+** Statins in acute stroke
+
+immediate statin not recommended
+continue statin in those already on statins
+
+** Oxygen
+
+give supplemental oxygen to people who have had a stroke only if their oxygen saturation drops below 95%
+
+** Blood sugar control
+
+maintain a blood glucose concentration between 4 and 11 mmol/litre
+provide optimal insulin therapy, which can be achieved by the use of intravenous insulin and glucose, to all adults with type 1 diabetes with threatened or actual stroke
+
+** BP control for people with acute intracerebral haemorrhage
+
+consider rapid BP lowering if present within 6 hours, and systolic BP 150 - 220 mmHg
+taking into account risk of harm consider BP lowering if > 6 hours or systolic BP > 200 mmHg
+aim to reduce systolic BP to 140 mmHg or less but no faster than 60 mmHg drop in first hour
+do not offer rapid blood pressure lowering to people who
+ - have an underlying structural cause (e.g. tumour, aneurysm, AVM)
+ - GCS < 6
+ - are going to have neurosurgery
+ - have a massive haemorrhage with poor prognosis
+seek advice from a paediatrician in people aged 16 and 17
+
+** BP control for people with acute ischaemic stroke
+
+not recommended unless hypertensive encephalopathy, hypertensive nephropathy, hypertensive cardiac failure/myocardial infarction, aortic dissection, pre-eclampsia/eclampsia
+blood pressure reduction to 185/110 mmHg or lower should be considered in people who are candidates for intravenous thrombolysis
+
+** Assessment of swallowing function
+
+screen for swallow on admission
+refer to specialist to be seen within 24 hours (not more than 72 hours)
+if suspected aspiration or require tube feeding or dietary modification then reassess (consider instrumental examination) and refer for dietary advice
+in acute stroke unable to take nutrition, fluids, and medication orally
+ - place NG tube within 24 hours, consider nasal bridle tube or gastrostomy, get nutritional assessment, have medication reviewed
+
+** Oral nutritional supplementation
+
+screen all hospital patients on admission for malnutrition or risk of malnutrition, repeat weekly
+screening should assess BMI, percentage unintentional weight loss. Consider MUST tool.
+be aware that dysphagia, poor oral health and reduced ability to self-feed will affect nutrition in people with stroke
+routine nutritional supplementation is not recommended
+start nutrition support for people with stroke who are at risk of malnutrition
+
+** Hydration
+
+assess hydration on admission and review regularly
+
+** Optimal positioning
+
+Assess the individual clinical needs and personal preferences of people with acute stroke to determine their optimal head position. Take into account factors such as their comfort, physical and cognitive abilities and postural control.
+
+** Early mobilisation
+
+Help people with acute stroke to sit out of bed, stand or walk as soon as their clinical condition permits as part of an active management programme in a specialist stroke unit.
+If people need help to sit out of bed, stand or walk, do not offer high-intensity mobilisation in the first 24 hours after symptom onset.
+
+** Avoiding aspiration pneumonia
+
+To avoid aspiration pneumonia, give food, fluids and medication to people with dysphagia in a form that can be swallowed without aspiration, after specialist assessment of swallowing
+
+** Surgery Acute intracerebral haemorrhage
+
+agree protocols for monitoring, referring and transferring people to regional neurosurgical centres for the management of symptomatic hydrocephalus
+People with intracerebral haemorrhage should be monitored by specialists in neurosurgical or stroke care for deterioration in function and referred immediately for brain imaging when necessary.
+Previously fit people should be considered for surgical intervention following primary intracerebral haemorrhage if they have hydrocephalus.
+People with any of the following rarely require surgical intervention and should receive medical treatment initially:
+ - small deep haemorrhages, 
+ - lobar haemorrhage without either hydrocephalus or rapid neurological deterioration
+ - a large haemorrhage and significant comorbidities before the stroke
+ - a score on the Glasgow Coma Scale of below 8 unless this is because of hydrocephalus
+ - posterior fossa haemorrhage
+
+** Surgery Decompressive hemicraniectomy
+
+Consider decompressive hemicraniectomy (which should be performed within 48 hours of symptom onset) for people with acute stroke who meet all of the following criteria:
+ - clinical deficits that suggest infarction in the territory of the middle cerebral artery, with a score above 15 on the NIHSS
+ - decreased level of consciousness, with a score of 1 or more on item 1a of the NIHSS
+ - signs on CT of an infarct of at least 50% of the middle cerebral artery territory
+  -- with or without additional infarction in the territory of the anterior or posterior cerebral artery on the same side or
+  -- with infarct volume greater than 145 cm3, as shown on diffusion-weighted MRI scan
+Discuss the risks and benefits of decompressive hemicraniectomy with people or their family members or carers (as appropriate), taking into account their functional status before the stroke, and their wishes and preferences.
+People who are referred for decompressive hemicraniectomy should be monitored by appropriately trained professionals skilled in neurological assessment.
+
+*** Source
+
+[[https://www.nice.org.uk/guidance/ng128/chapter/Recommendations][NICE guideline NG128]]
