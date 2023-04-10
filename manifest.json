@@ -1,6 +1,6 @@
 {
-	"name": "Eldercare2",
-	"short_name": "Eldercare2",
+	"name": "Eldercare App",
+	"short_name": "Eldercare",
 	"display": "standalone",
 	"start_url": "./?utm_source=pwa_install",
 	"scope": ".",
