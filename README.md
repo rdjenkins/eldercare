@@ -6,14 +6,6 @@ This compilation of educational material and its source code is licensed under a
 
 A live web demo is available here <a href="https://agnate.co.uk/ec/">https://agnate.co.uk/ec/</a>
 
-# apps
-
-The HTML5 app is also available built into mobile apps with the source code of the apps available as Open Source on github.
-
-The <a href="https://play.google.com/store/apps/details?id=uk.co.agnate.eldercare">Android app</a> and its source code <a href="https://github.com/rdjenkins/eldercare.android">eldercare.android</a>.
-
-The <a href="https://itunes.apple.com/us/app/eldercare/id1299533427">iOS App</a> and its source code <a href="https://github.com/rdjenkins/eldercare.ios">eldercare.ios</a>.
-
 Contributors:
 <a href="https://about.me/deanjenkins">Dean Jenkins</a>
 
