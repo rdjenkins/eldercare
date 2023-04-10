@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /.git
 Allow: /
 
-Sitemap: https://agnate.co.uk/ec2/sitemap.xml
+Sitemap: https://agnate.co.uk/ec/sitemap.xml
