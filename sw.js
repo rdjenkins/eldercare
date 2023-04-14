@@ -1,4 +1,4 @@
-const cacheName = "cache_20230410200045"; // Change value to force update
+const cacheName = "cache_20230414173108"; // Change value to force update
 
 self.addEventListener("install", event => {
 	// Kick out the old service worker
@@ -111,6 +111,7 @@ self.addEventListener("install", event => {
 "./js/pdftest.html",
 "./js/popper.min.js",
 "./js/scale_functions.js",
+"./js/scales/4AT.js",
 "./js/scales/6-cit.js",
 "./js/scales/ALONE.js",
 "./js/scales/CGIS.js",
@@ -145,6 +146,7 @@ self.addEventListener("install", event => {
 "./mstile-70x70.png",
 "./robots.txt",
 "./safari-pinned-tab.svg",
+"./scale_4AT.html",
 "./scale_6-cit.html",
 "./scale_ALONE.html",
 "./scale_CGIS.html",

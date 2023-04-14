@@ -9,9 +9,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles -->
     <link href="css/ec.css" rel="stylesheet">
-
+    <link href="css/scale.css" rel="stylesheet">
+    
     <!-- Icons and Colors -->
 	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -30,9 +31,9 @@
 	<meta name="keywords" content="" />
 	<meta property="og:locale" content="en_GB" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Eldercare 2" />
+	<meta property="og:title" content="Eldercare" />
 	<meta property="og:description" content="Eldercare app" />
-	<meta property="og:url" content="https://agnate.co.uk/ec/about.html" />
+	<meta property="og:url" content="https://agnate.co.uk/ec/scales.html" />
 	<meta property="og:site_name" content="Eldercare" />
 	<meta property="section:publisher" content="https://agnate.co.uk/" />
 	<meta property="og:image" content="https://agnate.co.uk/ec/share.jpg" />
@@ -40,7 +41,7 @@
 	<meta name="twitter:title" content="Eldercare" />
 	<meta name="twitter:description" content="Eldercare app" />
 	<meta name="twitter:site" content="@dean_jenkins" />
-	<meta name="twitter:image" content="https://agnate.co.uk/ec/share.jpg" />
+	<meta name="twitter:image" content="https://agnate.co.uk//share.jpg" />
 	<meta name="twitter:creator" content="@dean_jenkins" />
 
     <!-- manifest and service worker for PWA -->    
@@ -52,6 +53,7 @@
 			});
 		}
 	</script>
+	<title>Scale</title>
   </head>
 
   <body>
@@ -66,29 +68,12 @@
     <script src="js/bootstrap.min.js"></script>
 
     <div class="container">
-      <div class="home_title">
-        <h1>About</h1>
-        <p class="lead">About this app</p>
-      </div>
-
-      <p>This app was originally designed as an educational resource for medicine in the eldery with the support of the staff and students of the eldercare department at Royal Cornwall Hospital, UK.</p>
-      <p>Built with Bootstrap 4, HTML5, Font Awesome, Python, Orgnode, <a href="https://github.com/nikkifurls/simple-pwa">Simple PWA</a>. Where possible all original scientific works have been cited with a journal reference and all registered trademarks and copyright acknowledged.</p>
-      <p>This compilation of educational material and its <a href="https://github.com/rdjenkins/eldercare">source code</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
-      <p>Version: 14 April 2023 (17:31:08 UTC)</p><!-- automatically updated -->
-      <p>Contributors:<br>
-         <a href="https://about.me/deanjenkins">Dr Dean Jenkins</a></p>
-      <p class="small">Debug info:<br><span id="cachenamedisplay"> </span><a href="#" onclick="navigator.serviceWorker.getRegistrations().then(function(registrations) { for(let registration of registrations) { registration.unregister()} }); alert('maintenance - refreshing the service worker script'); window.location.reload(true);" class="Zbtn Zbtn-secondary">refresh</a></p>
+        <script src="js/scale_functions.js"></script>
+        <!-- The following is automatically created by go-scales.py -->
+        <script src="js/scales/4AT.js"></script>
+        <noscript><br>Error: javascript required. Please enable javascript.</noscript>
     </div><!-- /.container -->
-
-<script>
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.getRegistration().then(function(registration){
-        if (registration) {
-            document.getElementById("cachenamedisplay").innerHTML = "Service worker " + registration.active.state + " ";
-        }
-    });
-};
-</script>
 
   </body>
 </html>
+
