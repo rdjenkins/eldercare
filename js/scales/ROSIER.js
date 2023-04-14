@@ -13,7 +13,7 @@ function ROSIER()
 {
     var loc=getvaluefromcheckbox("tblable_calc_form_loc");
     var seizure=getvaluefromcheckbox("tblable_calc_form_seizure");
-    var facial=getvaluefromradio("tblable_calc_form_facial");
+    var facial=getvaluefromcheckbox("tblable_calc_form_facial");
 //    var grip=getvaluefromradio("tblable_calc_form_grip");
     var arm=getvaluefromcheckbox("tblable_calc_form_arm");
     var leg=getvaluefromcheckbox("tblable_calc_form_leg");
