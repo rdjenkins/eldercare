@@ -7,11 +7,11 @@ This compilation of educational material and its source code is licensed under a
 A live web demo is available here <a href="https://agnate.co.uk/ec/">https://agnate.co.uk/ec/</a>
 
 Contributors:
-<a href="https://about.me/deanjenkins">Dean Jenkins</a>
+<a href="https://agnate.co.uk/dean.jenkins">Dean Jenkins</a>
 
-# scale and guideline build script - go-scales.py
+# scale build script - go-scales.py
 
-go-scales.py is a build script written in Python which runs from the command line to create or update the scales and guidelines HTML and Javascript files within the App before being released to a browser or an App. It is a developer tool.
+go-scales.py is a build script written in Python which runs from the command line to create or update the scales HTML and Javascript files within the App before being released to a browser. It is a developer tool.
 
 The App is designed to be standalone and not require internet access. It could be used on a mobile device for example that doesn't have network access - such as a 'bring your own device' to clinical settings or clinic-based pre-programmed tablets or small screens. The scales are stored in js/scales and the static HTML pages that call them are all built on templates to make it easier to maintain. The scales are handcrafted for flexibility.
 
