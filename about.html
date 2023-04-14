@@ -84,7 +84,9 @@
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.getRegistration().then(function(registration){
         if (registration) {
+          if (registration.active) {
             document.getElementById("cachenamedisplay").innerHTML = "Service worker " + registration.active.state + " ";
+          }
         }
     });
 };
